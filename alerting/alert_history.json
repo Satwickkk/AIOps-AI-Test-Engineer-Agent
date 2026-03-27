@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-03-06T09:32:24.207176+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (4 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage.",
+    "channels_sent": [
+      "console"
+    ]
+  },
+  {
+    "timestamp": "2026-03-06T09:36:24.490768+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high memory usage and subsequent high error rates.",
+    "channels_sent": [
+      "console"
+    ]
+  },
+  {
+    "timestamp": "2026-03-06T09:37:31.873635+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (9 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage",
+    "channels_sent": [
+      "console"
+    ]
+  }
+]

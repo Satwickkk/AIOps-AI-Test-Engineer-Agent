@@ -1,0 +1,46 @@
+[
+  {
+    "action_id": "16BFC7EE",
+    "action_type": "reduce_load",
+    "severity": "MEDIUM",
+    "root_cause": "Elevated error rate (3 errors in window)",
+    "rationale": "Database connection pool is exhausted. Reducing incoming traffic will allow the pool to recover.",
+    "estimated_impact": "Load generator will slow request rate by 50%, reducing DB connection demand.",
+    "risk_level": "LOW",
+    "status": "PENDING",
+    "proposed_at": "2026-02-21T05:58:30.890737+00:00"
+  },
+  {
+    "action_id": "358DA7A2",
+    "action_type": "reduce_load",
+    "severity": "CRITICAL",
+    "root_cause": "Correlated system + log anomalies (4 errors)",
+    "rationale": "Database connection pool is exhausted. Reducing incoming traffic will allow the pool to recover.",
+    "estimated_impact": "Load generator will slow request rate by 50%, reducing DB connection demand.",
+    "risk_level": "LOW",
+    "status": "PENDING",
+    "proposed_at": "2026-03-06T09:32:24.218893+00:00"
+  },
+  {
+    "action_id": "9EF5B4FE",
+    "action_type": "reduce_load",
+    "severity": "CRITICAL",
+    "root_cause": "Correlated system + log anomalies (10 errors)",
+    "rationale": "Database connection pool is exhausted. Reducing incoming traffic will allow the pool to recover.",
+    "estimated_impact": "Load generator will slow request rate by 50%, reducing DB connection demand.",
+    "risk_level": "LOW",
+    "status": "PENDING",
+    "proposed_at": "2026-03-06T09:36:24.546343+00:00"
+  },
+  {
+    "action_id": "2A2A0F73",
+    "action_type": "reduce_load",
+    "severity": "CRITICAL",
+    "root_cause": "Correlated system + log anomalies (9 errors)",
+    "rationale": "Database connection pool is exhausted. Reducing incoming traffic will allow the pool to recover.",
+    "estimated_impact": "Load generator will slow request rate by 50%, reducing DB connection demand.",
+    "risk_level": "LOW",
+    "status": "PENDING",
+    "proposed_at": "2026-03-06T09:37:31.925982+00:00"
+  }
+]

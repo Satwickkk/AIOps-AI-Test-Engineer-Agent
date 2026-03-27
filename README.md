@@ -1,5 +1,10 @@
-# AIOps AI Test Engineer Agent v2
+# AIOps AI Test Engineer Agent 
 ### Continuous Monitoring | Hybrid ML Anomaly Detection | LLM-Powered Root Cause Analysis | Auto-Remediation | Feedback Learning
+
+<img width="464" height="211" alt="image" src="https://github.com/user-attachments/assets/c1de2e58-18fe-49fb-9ace-286cef4a5fb2" />
+<img width="460" height="149" alt="image" src="https://github.com/user-attachments/assets/3a42181e-c7db-4297-ae83-591d67a093bd" />
+<img width="490" height="150" alt="image" src="https://github.com/user-attachments/assets/dfcfb7bf-50d3-4a98-8978-e60bffb72dc6" />
+
 
 ---
 
@@ -99,47 +104,6 @@ streamlit run dashboard/app.py
 
 Both versions use the **same trained models, same logs, same output file**. You can switch between them at any time with no re-setup.
 
----
-
-## Expected v2 Startup Output
-
-```
-======================================================================
-AIOps AI Test Engineer v2 — Starting (All Modules Active)
-======================================================================
-Active modules:
-  [OK] Isolation Forest anomaly detection
-  [OK] Rolling Z-score baseline detector
-  [OK] Causal inference (do-calculus inspired)
-  [OK] Vector memory store (similar incident retrieval)
-  [OK] RLHF prompt tuning
-  [OK] Alert routing (Slack/PagerDuty if configured)
-  [OK] Human-approval remediation engine
-  [OK] Feedback learning
-======================================================================
-[Inference] Models loaded successfully.
-[MetricsCollector] Started. Sampling every 5s
-[Memory] Keyword search active (install faiss-cpu for vector search)
-
-[Agent v2] -- Cycle #1 @ 13:24:47 UTC --
-[Agent v2] Severity: HIGH | Elevated error rate (9 errors in window)
-[LLM] Sending RCA request to Groq...
-
-ROOT CAUSE ANALYSIS  [2026-02-18T13:24:50+00:00]
-Severity   : HIGH   |   Confidence : HIGH
-Root Cause : Database connection pool exhaustion caused by unexpected
-             surge in search requests.
-Suggested Fixes:
-  1. Increase the database connection pool size.
-  2. Implement dynamic connection pool scaling.
-  3. Monitor pool metrics proactively.
-
-[Alerting] ALERT: [HIGH] Elevated error rate — sent to: console
-[Memory]   Stored incident: A3F2B1C4 (HIGH)
-
-[Remediation] Action queued: [X7K2] reduce_load (Risk: LOW)
-Approve this action? [y/N]:
-```
 
 ---
 

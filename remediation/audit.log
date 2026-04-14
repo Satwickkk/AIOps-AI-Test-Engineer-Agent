@@ -1,0 +1,7 @@
+{"timestamp": "2026-02-21T05:58:30.891697+00:00", "event": "QUEUED", "action_id": "16BFC7EE", "action_type": "reduce_load", "severity": "MEDIUM", "status": "PENDING", "result": null}
+{"timestamp": "2026-02-21T06:02:46.699067+00:00", "event": "REJECTED", "action_id": "16BFC7EE", "action_type": "reduce_load", "severity": "MEDIUM", "status": "REJECTED", "result": null}
+{"timestamp": "2026-03-06T09:32:24.220247+00:00", "event": "QUEUED", "action_id": "358DA7A2", "action_type": "reduce_load", "severity": "CRITICAL", "status": "PENDING", "result": null}
+{"timestamp": "2026-03-06T09:36:02.666195+00:00", "event": "EXECUTED", "action_id": "358DA7A2", "action_type": "reduce_load", "severity": "CRITICAL", "status": "EXECUTED", "result": "Slow-load flag written. Load generator will reduce rate on next cycle."}
+{"timestamp": "2026-03-06T09:36:24.561317+00:00", "event": "QUEUED", "action_id": "9EF5B4FE", "action_type": "reduce_load", "severity": "CRITICAL", "status": "PENDING", "result": null}
+{"timestamp": "2026-03-06T09:36:29.013378+00:00", "event": "EXECUTED", "action_id": "9EF5B4FE", "action_type": "reduce_load", "severity": "CRITICAL", "status": "EXECUTED", "result": "Slow-load flag written. Load generator will reduce rate on next cycle."}
+{"timestamp": "2026-03-06T09:37:31.947561+00:00", "event": "QUEUED", "action_id": "2A2A0F73", "action_type": "reduce_load", "severity": "CRITICAL", "status": "PENDING", "result": null}

@@ -1,0 +1,27 @@
+# AIOps Agent v2 — Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core web application
+flask>=3.0.0
+requests>=2.31.0
+
+# System metrics
+psutil>=5.9.0
+
+# Machine learning (anomaly detection)
+scikit-learn>=1.4.0
+numpy>=1.26.0
+pandas>=2.0.0
+
+# LLM integration (Groq)
+groq
+
+# Dashboard
+streamlit>=1.35.0
+
+# Utilities
+python-dotenv>=1.0.0
+
+# OPTIONAL: Vector memory (enables semantic search over past incidents)
+# Without these, keyword search is used automatically as fallback
+# pip install sentence-transformers faiss-cpu

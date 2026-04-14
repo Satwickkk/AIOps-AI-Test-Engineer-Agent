@@ -1,0 +1,82 @@
+[
+  {
+    "incident_id": "0df0e756",
+    "timestamp": "2026-02-21T05:58:30.875971+00:00",
+    "severity": "MEDIUM",
+    "dominant_issue": "Elevated error rate (3 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high error rate and slow requests",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current traffic load",
+      "Optimize database queries to reduce the number of connections required",
+      "Implement a load balancer or autoscaling to dynamically adjust the number of connections based on traffic"
+    ],
+    "outcome": "UNKNOWN",
+    "tags": [
+      "database",
+      "connection",
+      "pool",
+      "error",
+      "slow"
+    ]
+  },
+  {
+    "incident_id": "b5d21900",
+    "timestamp": "2026-03-06T09:32:24.207176+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (4 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Implement retry mechanisms with exponential backoff to reduce the number of retries and subsequent connection pool exhaustion.",
+      "Optimize database queries to reduce the load on the database connection pool."
+    ],
+    "outcome": "UNKNOWN",
+    "tags": [
+      "database",
+      "cpu",
+      "connection",
+      "pool",
+      "error"
+    ]
+  },
+  {
+    "incident_id": "029a7871",
+    "timestamp": "2026-03-06T09:36:24.490768+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high memory usage and subsequent high error rates.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Implement retry mechanisms for database connections to mitigate the impact of temporary connection pool exhaustion.",
+      "Monitor and optimize the system's memory usage to prevent future exhaustion of the database connection pool."
+    ],
+    "outcome": "UNKNOWN",
+    "tags": [
+      "database",
+      "memory",
+      "connection",
+      "pool",
+      "error"
+    ]
+  },
+  {
+    "incident_id": "8c30856a",
+    "timestamp": "2026-03-06T09:37:31.873635+00:00",
+    "severity": "CRITICAL",
+    "dominant_issue": "Correlated system + log anomalies (9 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load",
+      "Implement retry mechanisms to handle transient errors and reduce the load on the connection pool",
+      "Optimize database queries to reduce the number of connections required"
+    ],
+    "outcome": "UNKNOWN",
+    "tags": [
+      "database",
+      "cpu",
+      "connection",
+      "pool",
+      "error"
+    ]
+  }
+]

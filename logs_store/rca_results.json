@@ -1,0 +1,898 @@
+[
+  {
+    "timestamp": "2026-02-18T12:59:36.030399+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (9 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high error rate and slow requests.",
+    "explanation": "The elevated error rate and slow requests are indicative of a resource bottleneck, specifically the database connection pool being exhausted. This is likely due to a surge in traffic or a misconfigured connection pool size. The high error rate and slow requests suggest that the application is unable to acquire a database connection in a timely manner, leading to search failures.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current traffic load.",
+      "Implement a connection pooling strategy that dynamically adjusts to changes in traffic demand.",
+      "Optimize database queries to reduce the number of connections required."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics and adjust the pool size proactively to prevent exhaustion.",
+      "Implement load balancing and scaling strategies to distribute traffic more evenly and reduce the load on the database."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 9,
+      "warning_count": 6,
+      "slow_count": 4,
+      "error_rate_pct": 9.47,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (9 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T13:01:03.470581+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high traffic and resource contention.",
+    "explanation": "The observed high CPU usage (10.54% avg, 22.8% peak) and memory usage (85.56% avg) indicate resource contention. The correlated system and log anomalies, including 10 errors and 5 warnings, suggest that the database connection pool is being exhausted. This is further supported by the error message 'Search failed: database connection pool exhausted'. The high latency (111.28ms avg, 172.49ms peak) and slow requests (>1s) also indicate a bottleneck in the database connection pool.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current traffic load.",
+      "Optimize database queries to reduce the number of connections required.",
+      "Implement a load balancer to distribute traffic and reduce the load on the database."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size as needed.",
+      "Implement a monitoring system to detect and alert on high connection pool usage."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 10.54,
+      "max_cpu_pct": 22.8,
+      "avg_mem_pct": 85.56,
+      "avg_latency_ms": 111.28,
+      "max_latency_ms": 172.49,
+      "error_count": 10,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 10.42,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (10 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T13:02:30.870844+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (8 errors)",
+    "root_cause": "Database connection pool exhaustion due to high traffic",
+    "explanation": "The system is experiencing a high traffic load, causing the database connection pool to become exhausted. This is evident from the anomalous CPU usage, high latency, and error messages indicating search failures due to database connection pool exhaustion. The error rate and slow request rate further support this conclusion, as they indicate that the system is struggling to handle the current load.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current traffic load",
+      "Implement load balancing or scaling to distribute the traffic across multiple instances",
+      "Optimize database queries to reduce the number of connections required"
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly",
+      "Implement a traffic management strategy to prevent sudden spikes in traffic",
+      "Regularly review and optimize database queries to ensure they are efficient"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 10.0,
+      "max_cpu_pct": 35.0,
+      "avg_mem_pct": 85.33,
+      "avg_latency_ms": 108.52,
+      "max_latency_ms": 233.55,
+      "error_count": 8,
+      "warning_count": 6,
+      "slow_count": 4,
+      "error_rate_pct": 8.51,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (8 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T13:24:50.299280+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (9 errors in window)",
+    "root_cause": "Database connection pool exhaustion caused by an unexpected surge in search requests.",
+    "explanation": "The elevated error rate and warning count in the log analysis indicate a potential issue with the database connection pool. The error message 'Search failed: database connection pool exhausted' directly points to this issue. The average latency and peak latency metrics are not available, but the slow requests count suggests that the system is experiencing performance issues. This is likely due to the connection pool being exhausted, preventing the application from establishing new database connections.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the expected surge in search requests.",
+      "Implement a connection pooling strategy with dynamic scaling to adjust to changing workload demands.",
+      "Monitor database connection pool metrics and adjust the pool size accordingly to prevent exhaustion."
+    ],
+    "prevention_steps": [
+      "Implement a rate limiting mechanism to prevent unexpected surges in search requests.",
+      "Monitor application performance and adjust the database connection pool size proactively to prevent exhaustion."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 9,
+      "warning_count": 6,
+      "slow_count": 4,
+      "error_rate_pct": 11.39,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (9 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-02-18T13:26:17.499179+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (6 errors)",
+    "root_cause": "Database connection pool exhaustion due to high CPU usage and increased latency.",
+    "explanation": "The observed high CPU usage (avg 17.03%, peak 43.0%) and increased latency (avg 143.7ms, peak 273.78ms) suggest that the system is under heavy load. The error message 'Search failed: database connection pool exhausted' indicates that the database connection pool is being depleted, causing search operations to fail. This is likely due to a combination of factors, including increased traffic, inefficient database queries, or inadequate database connection pooling configuration.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce the number of connections required.",
+      "Implement load balancing or scaling to distribute traffic and reduce the load on individual database instances."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Regularly review and optimize database queries to ensure they are efficient and do not cause excessive connection usage."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 17.03,
+      "max_cpu_pct": 43.0,
+      "avg_mem_pct": 85.3,
+      "avg_latency_ms": 143.7,
+      "max_latency_ms": 273.78,
+      "error_count": 6,
+      "warning_count": 3,
+      "slow_count": 2,
+      "error_rate_pct": 11.54,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (6 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-02-21T05:57:29.243404+00:00",
+    "severity": "MEDIUM",
+    "confidence": "MEDIUM",
+    "dominant_issue": "Elevated error rate (3 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high error rate and slow requests.",
+    "explanation": "The elevated error rate and slow requests are indicative of a database connection pool exhaustion issue. The error message 'Search failed: database connection pool exhausted' suggests that the application is unable to acquire a database connection from the pool, leading to errors. This could be due to a sudden surge in traffic or a configuration issue with the database connection pool.",
+    "suggested_fixes": [
+      "Increase the size of the database connection pool to handle the current traffic load.",
+      "Implement a connection pooling strategy that can dynamically adjust to changing traffic patterns.",
+      "Optimize database queries to reduce the number of connections required."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics closely to detect potential issues before they occur.",
+      "Implement a load balancer or autoscaling to distribute traffic and prevent sudden spikes.",
+      "Regularly review and adjust database connection pool configuration to ensure it aligns with current traffic patterns."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 3,
+      "warning_count": 2,
+      "slow_count": 1,
+      "error_rate_pct": 7.32,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (3 errors in window)",
+      "correlated": false,
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "timestamp": "2026-02-21T05:58:30.875971+00:00",
+    "severity": "MEDIUM",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (3 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high error rate and slow requests",
+    "explanation": "The elevated error rate and slow requests are indicative of a resource bottleneck in the database connection pool. The error message 'Search failed: database connection pool exhausted' suggests that the pool is unable to fulfill the requests, leading to errors. This could be due to a sudden increase in traffic, a misconfigured pool size, or a performance issue with the database itself.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current traffic load",
+      "Optimize database queries to reduce the number of connections required",
+      "Implement a load balancer or autoscaling to dynamically adjust the number of connections based on traffic"
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics and adjust pool size proactively",
+      "Implement alerting for high error rates and slow requests to catch similar issues early"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 3,
+      "warning_count": 2,
+      "slow_count": 1,
+      "error_rate_pct": 7.32,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (3 errors in window)",
+      "correlated": false,
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "timestamp": "2026-02-21T06:00:24.139149+00:00",
+    "severity": "MEDIUM",
+    "confidence": "MEDIUM",
+    "dominant_issue": "Elevated error rate (2 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to insufficient pool size or high database query load.",
+    "explanation": "The elevated error rate and error messages indicating 'database connection pool exhausted' suggest that the application is unable to acquire database connections from the pool, leading to failed searches. This could be due to an insufficient pool size, high database query load, or a combination of both. The lack of slow requests and warnings suggests that the issue is related to connection exhaustion rather than a performance bottleneck.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to ensure sufficient connections are available for the application.",
+      "Optimize database queries to reduce the load on the database and minimize the number of connections required.",
+      "Implement connection retry logic with exponential backoff to handle temporary connection exhaustion."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics and adjust the pool size accordingly to prevent connection exhaustion.",
+      "Regularly review and optimize database queries to ensure they are efficient and do not cause excessive connection usage."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 2,
+      "warning_count": 0,
+      "slow_count": 0,
+      "error_rate_pct": 14.29,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (2 errors in window)",
+      "correlated": false,
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "timestamp": "2026-02-24T08:11:39.993518+00:00",
+    "severity": "MEDIUM",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (4 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to excessive search requests.",
+    "explanation": "The elevated error rate is caused by a database connection pool exhaustion, as indicated by the error message 'Search failed: database connection pool exhausted'. This suggests that the web application is experiencing a high volume of search requests, which is exceeding the capacity of the database connection pool. As a result, the application is unable to establish a connection to the database, leading to errors. The peak error rate of 8.89% over the last 5 minutes further supports this conclusion.",
+    "suggested_fixes": [
+      "Increase the size of the database connection pool to handle the high volume of search requests.",
+      "Implement rate limiting or caching mechanisms to reduce the number of search requests and alleviate the load on the database connection pool.",
+      "Optimize database queries to improve performance and reduce the time spent waiting for database connections."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool utilization and adjust the pool size accordingly to prevent exhaustion.",
+      "Implement monitoring and alerting for high error rates and database connection pool exhaustion to enable prompt action.",
+      "Regularly review and optimize database queries to ensure they are performing efficiently and not causing bottlenecks."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 4,
+      "warning_count": 0,
+      "slow_count": 0,
+      "error_rate_pct": 8.89,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (4 errors in window)",
+      "correlated": false,
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "timestamp": "2026-03-06T09:32:24.207176+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (4 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage.",
+    "explanation": "The observed high error rates (10.0%) and CPU usage (3.4%) indicate a systemic issue. The error messages 'Search failed: database connection pool exhausted' suggest that the database connection pool is being depleted, likely due to the high error rates and subsequent retries. This is causing the system to become unresponsive, leading to the observed latency and CPU usage.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Implement retry mechanisms with exponential backoff to reduce the number of retries and subsequent connection pool exhaustion.",
+      "Optimize database queries to reduce the load on the database connection pool."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Implement monitoring for high error rates and CPU usage to detect similar issues early."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 3.4,
+      "max_cpu_pct": 3.4,
+      "avg_mem_pct": 85.7,
+      "avg_latency_ms": 75.57,
+      "max_latency_ms": 75.57,
+      "error_count": 4,
+      "warning_count": 0,
+      "slow_count": 0,
+      "error_rate_pct": 10.0,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (4 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-03-06T09:36:24.490768+00:00",
+    "severity": "CRITICAL",
+    "confidence": "MEDIUM",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high memory usage and subsequent high error rates.",
+    "explanation": "The system experienced a critical anomaly due to correlated system and log anomalies, with 10 errors and high CPU usage. The root cause is likely 'high_memory' which led to 'high_error_rate' through a causal chain. This suggests that the system's memory usage exceeded its capacity, causing the database connection pool to be exhausted, resulting in errors and high latency.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Implement retry mechanisms for database connections to mitigate the impact of temporary connection pool exhaustion.",
+      "Monitor and optimize the system's memory usage to prevent future exhaustion of the database connection pool."
+    ],
+    "prevention_steps": [
+      "Regularly review and adjust the database connection pool size based on system load and usage patterns.",
+      "Implement memory optimization techniques, such as garbage collection and caching, to reduce memory usage and prevent pool exhaustion."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 23.3,
+      "max_cpu_pct": 24.2,
+      "avg_mem_pct": 90.35,
+      "avg_latency_ms": 175.53,
+      "max_latency_ms": 180.07,
+      "error_count": 10,
+      "warning_count": 3,
+      "slow_count": 2,
+      "error_rate_pct": 10.53,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (10 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-03-06T09:37:31.873635+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (9 errors)",
+    "root_cause": "Database connection pool exhaustion due to high error rates and CPU usage",
+    "explanation": "The system is experiencing a critical issue where the database connection pool is being exhausted, leading to high error rates and CPU usage. This is likely due to a combination of factors, including high error rates and slow requests, which are causing the connection pool to become depleted. The system is unable to handle the increased load, resulting in a systemic issue that affects both system metrics and log analysis.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load",
+      "Implement retry mechanisms to handle transient errors and reduce the load on the connection pool",
+      "Optimize database queries to reduce the number of connections required"
+    ],
+    "prevention_steps": [
+      "Regularly monitor database connection pool usage and adjust the size as needed",
+      "Implement load balancing and scaling to distribute the load across multiple instances"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 3.9,
+      "max_cpu_pct": 3.9,
+      "avg_mem_pct": 82.3,
+      "avg_latency_ms": 77.73,
+      "max_latency_ms": 77.73,
+      "error_count": 9,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 9.38,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (9 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-03-06T09:38:48.906535+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (8 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high error rate",
+    "explanation": "The elevated error rate of 8.16% in the last 5 minutes is primarily caused by the 'Search failed: database connection pool exhausted' error message. This indicates that the database connection pool is unable to handle the current workload, leading to connection timeouts and search failures. The high error rate and slow requests suggest that the system is experiencing resource constraints, likely due to insufficient database connections or inadequate scaling.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current workload",
+      "Monitor database connection usage and adjust the pool size dynamically based on load",
+      "Implement connection retry logic to handle temporary connection failures"
+    ],
+    "prevention_steps": [
+      "Regularly review and adjust database connection pool sizes based on changing workloads",
+      "Implement load testing and capacity planning to ensure the system can handle expected loads"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 8,
+      "warning_count": 6,
+      "slow_count": 3,
+      "error_rate_pct": 8.16,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (8 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-03-06T09:40:17.957503+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (10 errors in window)",
+    "root_cause": "Database connection pool exhaustion caused by high error rate and slow requests.",
+    "explanation": "The elevated error rate and slow requests (>1s) indicate a bottleneck in the system, likely due to the database connection pool being exhausted. This is further supported by the error message 'Search failed: database connection pool exhausted'. The high error rate and slow requests suggest that the system is unable to handle the current load, leading to a backlog of requests and eventual exhaustion of the database connection pool.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current load.",
+      "Implement connection pooling with a dynamic resizing strategy to adapt to changing load conditions.",
+      "Optimize database queries to reduce the number of connections required."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Implement load balancing to distribute traffic and prevent sudden spikes in load.",
+      "Regularly review and optimize database queries to ensure they are efficient and do not lead to connection pool exhaustion."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 10,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 10.31,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (10 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-04-07T16:39:41.775485+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (7 errors in window)",
+    "root_cause": "Database connection pool exhaustion is causing search failures and elevated error rates.",
+    "explanation": "The elevated error rate and error messages indicating 'database connection pool exhausted' suggest that the database connection pool has reached its capacity, leading to search failures and slow requests. This is likely due to a sudden increase in search requests or a configuration issue with the connection pool. The warning count and slow requests further indicate that the system is experiencing performance issues.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to accommodate the sudden increase in search requests.",
+      "Optimize the database connection pool configuration to dynamically adjust to changing workload demands.",
+      "Implement a queuing mechanism or caching layer to reduce the load on the database connection pool."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics and adjust the pool size proactively to prevent exhaustion.",
+      "Implement a load balancer or autoscaling to distribute workload and prevent sudden spikes.",
+      "Regularly review and optimize database connection pool configurations to ensure they align with changing workload demands."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 7,
+      "warning_count": 7,
+      "slow_count": 4,
+      "error_rate_pct": 7.29,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (7 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-04-07T16:39:43.064504+00:00",
+    "severity": "HIGH",
+    "confidence": "HIGH",
+    "dominant_issue": "Elevated error rate (7 errors in window)",
+    "root_cause": "Database connection pool exhaustion due to high traffic",
+    "explanation": "The elevated error rate and slow requests are likely caused by the database connection pool being exhausted. This is a common issue when the application experiences a sudden surge in traffic, leading to a bottleneck in database connections. The error message 'Search failed: database connection pool exhausted' further supports this theory.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the expected traffic",
+      "Implement connection pooling with a dynamic scaling strategy to adapt to changing traffic patterns",
+      "Optimize database queries to reduce the number of connections required"
+    ],
+    "prevention_steps": [
+      "Implement traffic monitoring and alerting to detect sudden spikes in traffic",
+      "Configure the application to scale horizontally in response to increased traffic",
+      "Regularly review and optimize database queries to prevent connection exhaustion"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": null,
+      "max_cpu_pct": null,
+      "avg_mem_pct": null,
+      "avg_latency_ms": null,
+      "max_latency_ms": null,
+      "error_count": 7,
+      "warning_count": 7,
+      "slow_count": 4,
+      "error_rate_pct": 7.29,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Elevated error rate (7 errors in window)",
+      "correlated": false,
+      "severity": "HIGH"
+    }
+  },
+  {
+    "timestamp": "2026-04-07T16:41:09.083614+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (8 errors)",
+    "root_cause": "Database connection pool exhaustion due to high load",
+    "explanation": "The system is experiencing a high load, as indicated by the 8 errors and 6 warnings in the log analysis, which is causing the database connection pool to become exhausted. This is further supported by the anomalous system metrics, such as the high average memory usage and peak latency. The error messages 'Search failed: database connection pool exhausted' confirm that the issue is related to the database connection pool.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the high load",
+      "Optimize database queries to reduce the number of connections required",
+      "Implement load balancing or scaling to distribute the load across multiple instances"
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly",
+      "Implement alerting for high load conditions to trigger proactive scaling or load balancing"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 3.03,
+      "max_cpu_pct": 3.7,
+      "avg_mem_pct": 82.7,
+      "avg_latency_ms": 73.44,
+      "max_latency_ms": 76.7,
+      "error_count": 8,
+      "warning_count": 6,
+      "slow_count": 4,
+      "error_rate_pct": 8.42,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (8 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:38:14.186253+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (8 errors)",
+    "root_cause": "Database connection pool exhaustion caused by high CPU usage and increased latency.",
+    "explanation": "The observed high CPU usage and increased latency are likely causing the database connection pool to become exhausted, resulting in search failures. This is further supported by the log analysis showing 8 errors related to database connection pool exhaustion. The high CPU usage and increased latency suggest that the system is under heavy load, which may be due to a sudden increase in traffic or a resource-intensive operation.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce resource usage and improve performance.",
+      "Scale up the database instance to provide more resources and handle the increased load."
+    ],
+    "prevention_steps": [
+      "Implement load balancing to distribute traffic more evenly and prevent sudden spikes in load.",
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Regularly review and optimize database queries to prevent resource-intensive operations."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 54.25,
+      "max_cpu_pct": 59.9,
+      "avg_mem_pct": 88.15,
+      "avg_latency_ms": 330.06,
+      "max_latency_ms": 358.34,
+      "error_count": 8,
+      "warning_count": 7,
+      "slow_count": 4,
+      "error_rate_pct": 8.51,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (8 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:39:41.140808+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "CPU spike (100.0%) correlated with 8 errors in logs",
+    "root_cause": "Database connection pool exhaustion due to high CPU usage and increased latency.",
+    "explanation": "The observed CPU spike and high latency are indicative of a system bottleneck. The error messages 'Search failed: database connection pool exhausted' suggest that the database connection pool is being overwhelmed, leading to errors. This is likely caused by a combination of high CPU usage and increased latency, which are preventing the system from efficiently handling database requests.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce CPU usage and latency.",
+      "Scale up the database instance to improve performance and handle the increased load."
+    ],
+    "prevention_steps": [
+      "Implement rate limiting to prevent sudden spikes in traffic.",
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Regularly review and optimize database queries to prevent performance degradation."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 72.56,
+      "max_cpu_pct": 100.0,
+      "avg_mem_pct": 89.34,
+      "avg_latency_ms": 421.71,
+      "max_latency_ms": 559.2,
+      "error_count": 8,
+      "warning_count": 8,
+      "slow_count": 4,
+      "error_rate_pct": 8.51,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "CPU spike (100.0%) correlated with 8 errors in logs",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:41:09.681931+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "CPU spike (100.0%) correlated with 9 errors in logs",
+    "root_cause": "Database connection pool exhaustion due to high CPU usage and increased latency.",
+    "explanation": "The observed CPU spike and high latency indicate that the system is under heavy load, likely due to a surge in database queries. The error message 'database connection pool exhausted' suggests that the application is unable to acquire new database connections to handle the increased load, leading to search failures.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Implement connection pooling with a reasonable timeout to prevent exhaustion.",
+      "Optimize database queries to reduce the load on the database."
+    ],
+    "prevention_steps": [
+      "Implement load balancing to distribute the traffic more evenly.",
+      "Monitor database query performance and optimize queries regularly.",
+      "Set up alerts for high CPU usage and latency to detect similar issues early."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 72.9,
+      "max_cpu_pct": 100.0,
+      "avg_mem_pct": 88.75,
+      "avg_latency_ms": 423.39,
+      "max_latency_ms": 559.2,
+      "error_count": 9,
+      "warning_count": 8,
+      "slow_count": 5,
+      "error_rate_pct": 9.57,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "CPU spike (100.0%) correlated with 9 errors in logs",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:42:37.237224+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "CPU spike (100.0%) correlated with 10 errors in logs",
+    "root_cause": "Database connection pool exhaustion due to high CPU usage and increased latency.",
+    "explanation": "The observed CPU spike and high latency are likely causing the database connection pool to become exhausted, leading to search failures. This is further supported by the error messages indicating database connection pool exhaustion. The high CPU usage and latency are likely due to a resource-intensive operation or a misconfigured database connection pool.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce resource usage and improve performance.",
+      "Implement load balancing or scaling to distribute the load across multiple database instances."
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool metrics to detect potential exhaustion.",
+      "Implement alerts for high CPU usage and latency to catch potential issues early.",
+      "Regularly review and optimize database queries to ensure they are efficient."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 64.01,
+      "max_cpu_pct": 100.0,
+      "avg_mem_pct": 86.68,
+      "avg_latency_ms": 378.71,
+      "max_latency_ms": 558.81,
+      "error_count": 10,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 10.53,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "CPU spike (100.0%) correlated with 10 errors in logs",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:44:05.882647+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (9 errors)",
+    "root_cause": "Database connection pool exhaustion due to high CPU utilization and increased latency.",
+    "explanation": "The system is experiencing high CPU utilization (avg 53.82%, peak 70.6%) and increased latency (avg 327.6ms, peak 412.06ms), leading to database connection pool exhaustion. This is causing search failures, resulting in 9 errors and 4 slow requests over the last 5 minutes. The high error rate (9.68%) and correlated system and log anomalies suggest a systemic issue rather than a transient spike.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce CPU utilization and latency.",
+      "Scale up the database instance to improve performance and reduce load on the connection pool."
+    ],
+    "prevention_steps": [
+      "Implement a monitoring system to detect high CPU utilization and latency thresholds.",
+      "Configure alerts for database connection pool exhaustion and high error rates."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 53.82,
+      "max_cpu_pct": 70.6,
+      "avg_mem_pct": 85.22,
+      "avg_latency_ms": 327.6,
+      "max_latency_ms": 412.06,
+      "error_count": 9,
+      "warning_count": 5,
+      "slow_count": 4,
+      "error_rate_pct": 9.68,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (9 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:45:33.635753+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high CPU and latency.",
+    "explanation": "The observed high CPU usage of 55.28% and peak latency of 412.06ms indicate that the system is under heavy load. The correlated system and log anomalies suggest that the issue is not transient but rather systemic. The error message 'Search failed: database connection pool exhausted' further confirms that the database connection pool is exhausted, likely due to the high load.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the increased load.",
+      "Optimize database queries to reduce the number of connections required.",
+      "Scale up the database instance to improve its capacity to handle the load."
+    ],
+    "prevention_steps": [
+      "Implement load balancing to distribute the load across multiple instances.",
+      "Monitor database connection pool usage and adjust the pool size accordingly.",
+      "Regularly review and optimize database queries to prevent exhaustion."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 55.28,
+      "max_cpu_pct": 70.6,
+      "avg_mem_pct": 84.7,
+      "avg_latency_ms": 334.87,
+      "max_latency_ms": 412.06,
+      "error_count": 10,
+      "warning_count": 5,
+      "slow_count": 4,
+      "error_rate_pct": 10.75,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (10 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:47:01.429343+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high CPU usage and increased latency.",
+    "explanation": "The observed high CPU usage (56.18% average, 61.8% peak) and increased latency (339.43ms average, 367.56ms peak) are indicative of a resource-intensive workload. The correlated system and log anomalies, including 10 error messages indicating database connection pool exhaustion, suggest that the system is unable to handle the current load. This is likely due to insufficient database connection pool capacity or inefficient database queries.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current workload.",
+      "Optimize database queries to reduce the number of connections required.",
+      "Scale up the database instance to improve its capacity and performance."
+    ],
+    "prevention_steps": [
+      "Implement load balancing to distribute incoming requests across multiple database instances.",
+      "Monitor database connection pool utilization and adjust the pool size accordingly."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 56.18,
+      "max_cpu_pct": 61.8,
+      "avg_mem_pct": 85.3,
+      "avg_latency_ms": 339.43,
+      "max_latency_ms": 367.56,
+      "error_count": 10,
+      "warning_count": 4,
+      "slow_count": 3,
+      "error_rate_pct": 10.75,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (10 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:48:29.187265+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (10 errors)",
+    "root_cause": "Database connection pool exhaustion due to high load",
+    "explanation": "The system is experiencing high CPU usage (54.59%) and latency (331.38ms) due to a large number of concurrent requests. This has led to the database connection pool being exhausted, resulting in search failures and errors. The high error rate (10.75%) and slow requests (>1s) further indicate a systemic issue.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the high load",
+      "Implement connection pooling with a dynamic size adjustment mechanism to adapt to changing workload",
+      "Consider scaling the database instance to improve performance and reduce latency"
+    ],
+    "prevention_steps": [
+      "Monitor database connection pool usage and adjust the pool size accordingly",
+      "Implement load balancing and scaling mechanisms to distribute workload and prevent sudden spikes",
+      "Regularly review and optimize database queries to reduce resource usage"
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 54.59,
+      "max_cpu_pct": 61.8,
+      "avg_mem_pct": 84.32,
+      "avg_latency_ms": 331.38,
+      "max_latency_ms": 367.56,
+      "error_count": 10,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 10.75,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (10 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "timestamp": "2026-04-08T08:49:56.656843+00:00",
+    "severity": "CRITICAL",
+    "confidence": "HIGH",
+    "dominant_issue": "Correlated system + log anomalies (9 errors)",
+    "root_cause": "Database connection pool exhaustion due to insufficient configuration.",
+    "explanation": "The system is experiencing high CPU usage (52.37%) and elevated latency (320.08ms) with a peak of 349.61ms, indicating resource contention. The log analysis reveals 9 errors, 5 warnings, and 3 slow requests, all pointing to a systemic issue. The error message 'Search failed: database connection pool exhausted' suggests that the database connection pool is being depleted, causing the application to fail.",
+    "suggested_fixes": [
+      "Increase the database connection pool size to handle the current workload.",
+      "Optimize database queries to reduce the number of connections required.",
+      "Implement a connection pooling strategy to reclaim idle connections and prevent exhaustion."
+    ],
+    "prevention_steps": [
+      "Regularly monitor database connection pool metrics to detect potential issues.",
+      "Implement alerting and notification for connection pool exhaustion to prevent service downtime."
+    ],
+    "raw_evidence": {
+      "avg_cpu_pct": 52.37,
+      "max_cpu_pct": 58.3,
+      "avg_mem_pct": 82.43,
+      "avg_latency_ms": 320.08,
+      "max_latency_ms": 349.61,
+      "error_count": 9,
+      "warning_count": 5,
+      "slow_count": 3,
+      "error_rate_pct": 9.57,
+      "error_messages": [
+        "Search failed: database connection pool exhausted"
+      ],
+      "dominant_issue": "Correlated system + log anomalies (9 errors)",
+      "correlated": true,
+      "severity": "CRITICAL"
+    }
+  }
+]

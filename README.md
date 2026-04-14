@@ -1,6 +1,11 @@
-# AIOps AI Test Engineer Agent — v2.0
+# AIOps AI Test Engineer Agent 
 
 > **Continuous Monitoring · Hybrid ML Anomaly Detection · LLM-Powered Root Cause Analysis · Auto-Remediation · Feedback Learning · Client Server Onboarding**
+<img width="464" height="211" alt="image" src="https://github.com/user-attachments/assets/02ea0861-d0c2-411e-872b-9fd885f42d85" />
+<img width="460" height="149" alt="image" src="https://github.com/user-attachments/assets/586cd9ba-cc51-461a-ac66-014e56892020" />
+<img width="490" height="150" alt="image" src="https://github.com/user-attachments/assets/73150fea-970d-4e98-946f-92fc634497b2" />
+<img width="488" height="213" alt="image" src="https://github.com/user-attachments/assets/121e50b3-dcf8-450e-aca5-cd62a5576785" />
+<img width="488" height="224" alt="image" src="https://github.com/user-attachments/assets/6ae60630-a9f0-4619-a5be-1aed02186095" />
 
 ---
 
@@ -22,86 +27,6 @@ The **AIOps AI Test Engineer Agent** is an end-to-end intelligent operations pla
 | **Client onboarding** | SSH into any client server, verify DB + logs + health endpoint, pull live data |
 
 ---
-
-## Project Structure
-
-```
-aiops_agent/
-│
-├── webapp/
-│   ├── app.py                      # Flask test target — 4 endpoints with injected faults
-│   └── load_generator.py           # Continuous traffic simulator
-│
-├── metrics/
-│   ├── collector.py                # psutil sampler — CPU, memory, latency every 5 seconds
-│   └── metrics.csv                 # Runtime-generated
-│
-├── agent/
-│   ├── train.py                    # OFFLINE: trains two Isolation Forest models
-│   ├── inference.py                # RUNTIME: sliding-window anomaly detection
-│   ├── rca_builder.py              # Structures anomaly evidence for LLM
-│   ├── llm_reasoning.py            # Groq LLaMA3-70B API integration
-│   ├── baseline_detector.py        # Rolling Z-Score drift detector
-│   ├── causal_inference.py         # Do-calculus inspired causal chain analysis
-│   ├── agent_loop.py               # v1: original simple 30-second loop
-│   └── agent_loop_v2.py            # v2: all 8 modules integrated
-│
-├── remediation/
-│   └── remediation_engine.py       # Rule-based proposer + human approval gate
-│
-├── feedback/
-│   ├── feedback_learning.py        # Fix outcome tracking and effectiveness DB
-│   └── rlhf_loop.py                # Prompt variant scoring and auto-exploration
-│
-├── alerting/
-│   └── alert_router.py             # Slack + PagerDuty routing with deduplication
-│
-├── memory/
-│   └── vector_memory.py            # FAISS vector incident store + keyword fallback
-│
-├── client_integration/             # ← NEW: Client server onboarding module
-│   ├── client_config.py            # Stores client server/DB/alert details
-│   ├── server_connector.py         # SSH verifier — proof of connection
-│   ├── remote_log_collector.py     # Pulls client app.log via SSH every 10 seconds
-│   ├── remote_metrics_collector.py # Pulls CPU/memory via SSH or Prometheus
-│   └── client_manager.py           # Single entry point for all client operations
-│
-├── dashboard/
-│   ├── app.py                      # Streamlit dashboard — Agent Monitor + Client tabs
-│   └── client_page.py              # ← NEW: Client onboarding and proof page
-│
-├── onboard_client.py               # ← NEW: Run once to register a client from terminal
-│
-├── models/                         # Created by train.py
-│   ├── metrics_model.pkl
-│   └── log_model.pkl
-│
-├── logs_store/                     # Created at runtime
-│   ├── app.log
-│   ├── rca_results.json
-│   └── <client_id>/app.log         # Per-client pulled logs
-│
-├── client_integration/             # Created at runtime
-│   ├── clients.json                # All registered client details
-│   └── proof_reports/              # Per-client JSON proof files
-│
-├── remediation/                    # Created at runtime
-│   ├── pending_actions.json
-│   └── audit.log
-│
-├── feedback/                       # Created at runtime
-│   ├── feedback_store.json
-│   └── best_prompt_config.json
-│
-├── memory/                         # Created at runtime
-│   └── incidents.json
-│
-├── alerting/                       # Created at runtime
-│   └── alert_history.json
-│
-├── requirements.txt
-└── README.md
-```
 
 ---
 
@@ -232,105 +157,6 @@ Health check URL (optional)    e.g.  https://theirsite.com/health
 
 ---
 
-### Option A — Onboard from terminal (fastest)
-
-**1. Edit `onboard_client.py` with the client's details:**
-
-```python
-CLIENT = dict(
-    company_name    = "Acme Corp",
-    website_url     = "https://acme.com",
-    server_host     = "203.0.113.10",
-    server_port     = 22,
-    server_user     = "ubuntu",
-    ssh_key_path    = "~/.ssh/acme_key.pem",
-    server_password = "",
-    app_log_path    = "/var/log/acme/app.log",
-    metrics_endpoint= "",
-    app_health_url  = "https://acme.com/health",
-    db_type         = "mysql",
-    db_host         = "localhost",
-    db_port         = 3306,
-    db_name         = "acme_production",
-    db_user         = "monitor_user",
-    db_password     = "their_db_password",
-    slack_webhook   = "",
-    pagerduty_key   = "",
-    contact_email   = "admin@acme.com",
-)
-```
-
-**2. Run it:**
-
-```bash
-python onboard_client.py
-```
-
-**3. Expected output:**
-
-```
-============================================================
-  AIOps Client Onboarding
-  Company: Acme Corp
-  Server:  203.0.113.10:22
-============================================================
-
-[Connector] SSH → ubuntu@203.0.113.10:22
-[Connector] SSH OK ✅
-[Connector] Server: acme-prod-01 | Ubuntu 22.04.3 LTS
-[Connector] MySQL OK ✅ — v8.0.35, 24 tables
-[Connector] Log OK ✅ — 48M, 92847 lines
-[Connector] Health ✅ — HTTP 200
-
-  Client ID : AB12CD34
-  SSH        : ✅
-  Database   : ✅  (mysql, 24 tables)
-  Log file   : ✅  (48M, 92847 lines)
-  Health URL : ✅  (200 OK, 142ms)
-
-  Proof saved → client_integration/proof_reports/AB12CD34_*.json
-
-  Next steps:
-  1. streamlit run dashboard/app.py
-  2. Go to 🏢 Client Onboarding → Connection Proof
-  3. Select Acme Corp → full proof with all verified details
-  4. Click ▶ Start Monitoring to begin live log + metrics collection
-  5. python agent/agent_loop_v2.py
-============================================================
-```
-
----
-
-### Option B — Onboard from the dashboard (no terminal needed)
-
-```bash
-streamlit run dashboard/app.py
-```
-
-Go to **🏢 Client Onboarding → ➕ Register New Client**
-
-Fill in the form and click **Register & Verify Connection**. The proof appears immediately.
-
----
-
-### Start live monitoring for a client
-
-After onboarding, go to **All Clients → ▶ Start Monitoring**.
-
-This starts two background threads:
-- `RemoteLogCollector` — SSH-pulls their app.log every 10 seconds into `logs_store/<client_id>/app.log`
-- `RemoteMetricsCollector` — SSH-pulls or Prometheus-polls CPU/memory every 5 seconds
-
-Then run the agent normally:
-
-```bash
-python agent/agent_loop_v2.py
-```
-
-The agent reads the client's logs and metrics automatically.
-
----
-
 ## Dashboard Pages
 
 ### 📊 Agent Monitor tab
@@ -369,53 +195,6 @@ The agent reads the client's logs and metrics automatically.
 | `SLACK_WEBHOOK_URL` | No | Slack Incoming Webhook URL |
 | `PAGERDUTY_ROUTING_KEY` | No | PagerDuty Events API v2 routing key |
 | `ALERT_MIN_SEVERITY` | No | `HIGH` or `CRITICAL` — default: HIGH |
-
----
-
-## Security Notes for Client Onboarding
-
-**Create a read-only database user** on the client's server before entering credentials:
-
-```sql
--- MySQL
-CREATE USER 'aiops_monitor'@'%' IDENTIFIED BY 'strong_password';
-GRANT SELECT ON client_db.* TO 'aiops_monitor'@'%';
-
--- PostgreSQL
-CREATE USER aiops_monitor WITH PASSWORD 'strong_password';
-GRANT CONNECT ON DATABASE client_db TO aiops_monitor;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO aiops_monitor;
-```
-
-**Use SSH key authentication** — avoid storing passwords where possible.
-
-**Add to `.gitignore`:**
-
-```
-client_integration/clients.json
-client_integration/proof_reports/
-feedback/
-memory/
-models/
-logs_store/
-```
-
-SSH keys are only referenced by path — never copied or stored by the system. Proof reports contain no passwords and are safe to share with clients.
-
----
-
-## Re-Training the Models
-
-```bash
-# Delete old models
-rm models/metrics_model.pkl
-rm models/log_model.pkl
-
-# Run at least 2 minutes of load generator first, then:
-python agent/train.py
-```
-
-Retrain whenever you deploy to a new server environment for best accuracy.
 
 ---
 
